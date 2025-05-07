@@ -23,6 +23,3 @@ A full-stack backend system built with **Spring Boot**, featuring:
 
 ---
 
-✅ Ready to submit to your professor.
-
-Good luck! Need a final screenshot pack or ZIP export for submission?
