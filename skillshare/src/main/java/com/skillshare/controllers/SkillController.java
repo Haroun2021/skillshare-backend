@@ -1,38 +1,40 @@
 package com.skillshare.controllers;
 
-import com.skillshare.entities.Skill;
-import com.skillshare.services.SkillService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import com.skillshare.entities.Skill;
+import com.skillshare.services.SkillService;
 
 @RestController
 @RequestMapping("/api/skills")
 public class SkillController {
 
-    private final SkillService service;
+    private final SkillService skillService;
 
-    public SkillController(SkillService service) {
-        this.service = service;
+    public SkillController(SkillService skillService) {
+        this.skillService = skillService;
     }
 
     @GetMapping
-    public List<Skill> getAll() {
-        return service.getAll();
+    public ResponseEntity<Page<Skill>> getAllSkills(Pageable pageable) {
+        return ResponseEntity.ok(skillService.getAll(pageable));
     }
 
     @GetMapping("/{id}")
     public Skill getById(@PathVariable Long id) {
-        return service.getById(id);
+        return skillService.getById(id);
     }
 
     @PostMapping
     public Skill create(@RequestBody Skill skill) {
-        return service.save(skill);
+        return skillService.save(skill);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        service.delete(id);
+        skillService.delete(id);
     }
 }

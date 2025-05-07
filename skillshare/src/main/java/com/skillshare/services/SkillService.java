@@ -1,5 +1,7 @@
 package com.skillshare.services;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import com.skillshare.entities.Skill;
 import com.skillshare.repositories.SkillRepository;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,8 @@ public class SkillService {
         this.repo = repo;
     }
 
-    public List<Skill> getAll() {
-        return repo.findAll();
+    public Page<Skill> getAll(Pageable pageable) {
+        return repo.findAll(pageable);
     }
 
     public Skill save(Skill skill) {

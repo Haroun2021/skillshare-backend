@@ -1,6 +1,6 @@
 package com.skillshare.entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,8 +22,9 @@ public class Skill {
     private String description;
     private int durationInMinutes;
 
+    // ✅ Base64 thumbnail image
     @Lob
-    private String thumbnailImage; // base64 or filename
+    private String thumbnailImage;
 
     // Many skills belong to one category
     @ManyToOne
