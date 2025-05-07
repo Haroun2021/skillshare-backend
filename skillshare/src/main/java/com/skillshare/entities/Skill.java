@@ -1,4 +1,5 @@
 package com.skillshare.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,6 +37,7 @@ public class Skill {
 
     // Many learners can enroll in many skills
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "skill_enrollments",
             joinColumns = @JoinColumn(name = "skill_id"),

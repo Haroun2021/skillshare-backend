@@ -1,5 +1,5 @@
 package com.skillshare.entities;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,5 +21,6 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private Set<Skill> skills = new HashSet<>();
 }
